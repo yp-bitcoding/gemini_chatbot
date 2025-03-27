@@ -16,10 +16,10 @@ chat = model.start_chat(history=[])
 
 
 def get_gemini_response(question):
-    """Fetch response from Gemini AI."""
+    """Fetch response from Gemini API."""
     start_time = time.perf_counter()
     response = chat.send_message(question, stream=True)
-    print(f"End : {time.perf_counter() - start_time}")
+    print(f"End: {time.perf_counter() - start_time}")
     return response
 
 
@@ -27,20 +27,19 @@ def get_gemini_response(question):
 st.set_page_config(page_title="Q&A Demo")
 st.header("Gemini LLM Application")
 
-# Initialize the session state for chat history if it doesn't exist
+# Initialize session state for chat history
 if "chat_history" not in st.session_state:
     st.session_state["chat_history"] = []
 
-user_input = st.text_input("Input: ", key="input")
+input_text = st.text_input("Input:", key="input")
 submit = st.button("Ask the Question")
 
-if submit and user_input:
-    response = get_gemini_response(user_input)
-
+if submit and input_text:
+    response = get_gemini_response(input_text)
     # Add user query and response to session chat history
-    st.session_state["chat_history"].append(("You", user_input))
-    
+    st.session_state["chat_history"].append(("You", input_text))
     st.subheader("The Response is")
     for chunk in response:
         st.write(chunk.text)
         st.session_state["chat_history"].append(("Bot", chunk.text))
+
