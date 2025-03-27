@@ -1,0 +1,15 @@
+# Ignore environment files
+.env
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment (if using one)
+venv/
+.env/
+
+# Ignore Streamlit logs (optional)
+streamlit.log
