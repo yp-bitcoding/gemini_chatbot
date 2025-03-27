@@ -16,7 +16,7 @@ chat = model.start_chat(history=[])
 
 
 def get_gemini_response(question):
-    """Fetch response from Gemini API."""
+    """Fetch response from Gemini API"""
     start_time = time.perf_counter()
     response = chat.send_message(question, stream=True)
     print(f"End: {time.perf_counter() - start_time}")
