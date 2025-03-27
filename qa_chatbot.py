@@ -42,4 +42,3 @@ if submit and input_text:
     for chunk in response:
         st.write(chunk.text)
         st.session_state["chat_history"].append(("Bot", chunk.text))
-
